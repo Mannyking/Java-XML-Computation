@@ -8,6 +8,6 @@ module com.jfx.xmloutput.xmloutputfx {
     requires org.kordamp.bootstrapfx.core;
     requires jakarta.xml.bind;
 
-    opens com.jfx.xmloutput.xmloutputfx to javafx.fxml;
+    opens com.jfx.xmloutput.xmloutputfx;
     exports com.jfx.xmloutput.xmloutputfx;
 }

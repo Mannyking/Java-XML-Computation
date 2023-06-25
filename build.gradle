@@ -47,6 +47,8 @@ dependencies {
 
     //xml dependencies
     implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0'
+    implementation 'org.eclipse.persistence:eclipselink:4.0.1'
+    implementation 'org.eclipse.persistence:org.eclipse.persistence.core:4.0.1'
 }
 
 test {
