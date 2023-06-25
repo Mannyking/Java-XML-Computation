@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.jfx.xmloutput.xmloutputfx.MainViewController"
+            stylesheets="@styles.css">
+    <children>
+        <VBox id="contentBox" spacing="10.0" alignment="CENTER">
+            <!-- Individual Information -->
+            <HBox spacing="5.0" style="-fx-padding: 3px;">
+                <Label text="TransactionRef:"/>
+                <TextField fx:id="transactionRefField"/>
+            </HBox>
+            <HBox spacing="5.0" style="-fx-padding: 3px;">
+                <Label text="BranchSortCode:"/>
+                <TextField fx:id="branchSortCodeField"/>
+            </HBox>
+            <HBox spacing="5.0" style="-fx-padding: 3px;">
+                <Label text="AccountName:"/>
+                <TextField fx:id="accountNameField"/>
+            </HBox>
+            <HBox spacing="5.0" style="-fx-padding: 3px;">
+                <Label text="Account_BVN_TIN:"/>
+                <TextField fx:id="accountBVNTINField"/>
+            </HBox>
+            <HBox spacing="5.0" style="-fx-padding: 3px;">
+                <Label text="AccountType:"/>
+                <TextField fx:id="accountTypeField"/>
+            </HBox>
+            <HBox spacing="5.0" style="-fx-padding: 3px;">
+                <Label text="AccountNumber:"/>
+                <TextField fx:id="accountNumberField"/>
+            </HBox>
+            <HBox spacing="5.0" style="-fx-padding: 3px;">
+                <Label text="Amount:"/>
+                <TextField fx:id="amountField"/>
+            </HBox>
+            <HBox spacing="5.0" style="-fx-padding: 3px;">
+                <Label text="Payee_BVN_TIN:"/>
+                <TextField fx:id="payeeBVNTINField"/>
+            </HBox>
+            <HBox spacing="5.0" style="-fx-padding: 3px;">
+                <Label text="WithdrawalChannel:"/>
+                <TextField fx:id="withdrawalChannelField"/>
+            </HBox>
+            <HBox spacing="5.0" style="-fx-padding: 3px;">
+                <Label text="Charges:"/>
+                <TextField fx:id="chargesField"/>
+            </HBox>
+            <HBox spacing="5.0" style="-fx-padding: 3px;">
+                <Label text="TransactionTimestamp:"/>
+                <TextField fx:id="transactionTimestampField"/>
+            </HBox>
+            <HBox spacing="5.0" style="-fx-padding: 3px;">
+                <Label text="SupportingFileName:"/>
+                <TextField fx:id="supportingFileNameField"/>
+            </HBox>
+
+            <!-- Buttons -->
+            <HBox id="buttonsBox" spacing="10.0" alignment="CENTER">
+                <Button text="Add" onAction="#onAddIndividual"/>
+                <Button text="Delete" onAction="#onDeleteIndividual"/>
+                <Button text="Finish" onAction="#onFinish"/>
+                <Button text="Previous" onAction="#onGoToPreviousScene"/>
+            </HBox>
+        </VBox>
+    </children>
+    <padding>
+        <Insets top="400" />
+    </padding>
+</AnchorPane>

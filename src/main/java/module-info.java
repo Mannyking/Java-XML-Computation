@@ -6,6 +6,7 @@ module com.jfx.xmloutput.xmloutputfx {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    requires jakarta.xml.bind;
 
     opens com.jfx.xmloutput.xmloutputfx to javafx.fxml;
     exports com.jfx.xmloutput.xmloutputfx;
