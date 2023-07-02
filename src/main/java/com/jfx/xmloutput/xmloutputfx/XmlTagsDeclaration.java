@@ -1,18 +1,26 @@
 package com.jfx.xmloutput.xmloutputfx;
 
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
 
-@XmlRootElement(name = "WITHDRAWAL" + "REPORT")
-//@XmlType(propOrder = {""})
+import java.util.List;
+
 public class XmlTagsDeclaration {
+    @XmlElementWrapper(name = "WITHDRAWALREPORTS")
+    @XmlElement(name = "WITHDRAWALREPORT")
+    private List<XmlTagsDeclaration> individual;
     @XmlElement(name = "HEADER")
     private Header header;
     @XmlElement(name = "BODY")
     private BodyPart bodyPart;
-    @XmlElement(name = "TRANSACTIONITEM")
-    private BodyPart transactionItem;
 
+    public List<XmlTagsDeclaration> getIndividual() {
+        return individual;
+    }
+
+    public void setIndividual(List<XmlTagsDeclaration> newIndividual) {
+        this.individual = newIndividual;
+    }
 
     public void getHeader(){
 

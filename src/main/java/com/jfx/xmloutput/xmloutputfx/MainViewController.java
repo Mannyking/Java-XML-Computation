@@ -11,8 +11,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.time.LocalDate;
 
 public class MainViewController {
     @FXML
@@ -85,18 +88,14 @@ public class MainViewController {
                 Marshaller marshaller = context.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-                // Create an Unmarshaller
-                Unmarshaller unmarshaller = context.createUnmarshaller();
-
-                // Create a XmlTagsDeclaration instance
-                XmlTagsDeclaration xmlTagsDeclaration = new XmlTagsDeclaration();
+                //Creating List to hold each Individual object
+                List<XmlTagsDeclaration> individual = new ArrayList<>();
 
                 XmlTagsDeclaration.Header header = new XmlTagsDeclaration.Header();
                 header.setDescription("DAILY WITHDRAWAL RETURNS");
                 header.setInstitutionCode("90089");
                 header.setInstitutionName("COOPERATIVE MORTGAGE BANK");
-                header.setReportingDate("2023-05-09");
-                xmlTagsDeclaration.setHeader(header);
+                header.setReportingDate(String.valueOf(LocalDate.now()));
 
                 XmlTagsDeclaration.BodyPart bodyPart = new XmlTagsDeclaration.BodyPart();
                 XmlTagsDeclaration.TransactionItem transactionItem = new XmlTagsDeclaration.TransactionItem();
@@ -114,7 +113,19 @@ public class MainViewController {
                 transactionItem.setTransactionTimestamp(transactionTimestampString);
                 transactionItem.setSupportingFileName(supportingFileNameString);
 
-                xmlTagsDeclaration.setBodyPart(bodyPart);
+                XmlTagsDeclaration xmlTagsDeclaration1 = new XmlTagsDeclaration();
+                xmlTagsDeclaration1.setHeader(header);
+                xmlTagsDeclaration1.setBodyPart(bodyPart);
+
+                XmlTagsDeclaration xmlTagsDeclaration2 = new XmlTagsDeclaration();
+                xmlTagsDeclaration2.setHeader(header);
+                xmlTagsDeclaration2.setBodyPart(bodyPart);
+
+                individual.add(xmlTagsDeclaration1);
+                individual.add(xmlTagsDeclaration2);
+
+                XmlTagsDeclaration xmlTagsDeclaration = new XmlTagsDeclaration();
+                xmlTagsDeclaration.setIndividual(individual);
 
                 // Marshalling (Object to XML)
                 File outputFile = new File(finishedDate + ".xml");
