@@ -11,8 +11,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 
 import java.io.File;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.time.LocalDate;
@@ -43,11 +44,23 @@ public class MainViewController {
     @FXML
     private TextField supportingFileNameField;
 
-    public void onDeleteIndividual(ActionEvent event) {
-        chargesField.setText("0.00");
-    }
+    LocalDate localDate = LocalDate.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);
+    String formattedDate = localDate.format(formatter);
 
-    public void onAddIndividual(ActionEvent event) {
+    public void onDeleteIndividual(ActionEvent event) {
+        transactionRefField.setText("");
+        branchSortCodeField.setText("");
+        accountNameField.setText("");
+        accountBVNTINField.setText("");
+        accountTypeField.setText("");
+        accountNumberField.setText("");
+        amountField.setText("");
+        payeeBVNTINField.setText("");
+        withdrawalChannelField.setText("");
+        chargesField.setText("");
+        transactionTimestampField.setText("");
+        supportingFileNameField.setText("");
     }
 
     public void onFinish(ActionEvent event) {
@@ -67,7 +80,7 @@ public class MainViewController {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Compute to XML");
-        alert.setContentText("Click OK to finish or Cancel to continue editing.");
+        alert.setContentText("Click Confirm to finish or Cancel to continue editing.");
 
         ButtonType buttonTypeConfirm = new ButtonType("Confirm");
         ButtonType buttonTypeCancel = new ButtonType("Cancel");
@@ -76,10 +89,6 @@ public class MainViewController {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == buttonTypeConfirm) {
-            Date date = new Date();
-            String convertedDate = date.toString();
-            String finishedDate = convertedDate.replaceAll(":", "");
-            System.out.println(convertedDate);
             try {
                 // Create an instance of the JAXBContext for the target class
                 JAXBContext context = JAXBContext.newInstance(XmlTagsDeclaration.class);
@@ -117,18 +126,13 @@ public class MainViewController {
                 xmlTagsDeclaration1.setHeader(header);
                 xmlTagsDeclaration1.setBodyPart(bodyPart);
 
-                XmlTagsDeclaration xmlTagsDeclaration2 = new XmlTagsDeclaration();
-                xmlTagsDeclaration2.setHeader(header);
-                xmlTagsDeclaration2.setBodyPart(bodyPart);
-
                 individual.add(xmlTagsDeclaration1);
-                individual.add(xmlTagsDeclaration2);
 
                 XmlTagsDeclaration xmlTagsDeclaration = new XmlTagsDeclaration();
                 xmlTagsDeclaration.setIndividual(individual);
 
                 // Marshalling (Object to XML)
-                File outputFile = new File(finishedDate + ".xml");
+                File outputFile = new File(formattedDate + ".xml");
                 marshaller.marshal(xmlTagsDeclaration, outputFile);
                 alert.close();
                 System.out.println("Object marshalled to XML successfully.");
@@ -141,8 +145,5 @@ public class MainViewController {
         } else {
             alert.close();
         }
-    }
-
-    public void onGoToPreviousScene(ActionEvent event) {
     }
 }

@@ -1,15 +1,42 @@
-/* styles.css */
 .root {
-    -fx-background-color: #02073a;
+    -fx-background-color: #f1f1f1;
 }
 
 .label {
-    -fx-font-size: 16px;
-    -fx-text-fill: #64C245;
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
 }
 
 .button {
-    -fx-background-color: #64C245;
+    -fx-background-color: #64B5F6;
     -fx-text-fill: #FFFFFF;
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 4px;
+}
+
+.button:hover {
+    -fx-background-color: #4285F4;
+}
+
+.text-field {
+    -fx-font-size: 16px;
+    -fx-prompt-text-fill: #999999;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10px;
+    -fx-pref-height: 10px; /* Adjust the height as needed */
+}
+
+.text-field:focused {
+    -fx-border-color: #64B5F6;
+}
+
+.text-field:hover {
+    -fx-border-color: #AAAAAA;
+}
+
+.text-area {
+    -fx-font-size: 16px;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 2px;
 }

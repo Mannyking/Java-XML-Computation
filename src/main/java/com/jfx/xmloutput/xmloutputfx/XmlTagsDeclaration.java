@@ -6,7 +6,6 @@ import jakarta.xml.bind.annotation.XmlElementWrapper;
 import java.util.List;
 
 public class XmlTagsDeclaration {
-    @XmlElementWrapper(name = "WITHDRAWALREPORTS")
     @XmlElement(name = "WITHDRAWALREPORT")
     private List<XmlTagsDeclaration> individual;
     @XmlElement(name = "HEADER")
